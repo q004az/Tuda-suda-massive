@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(int argc, char *argv[])
+{
+	system("chcp 65001");
+	srand(time(NULL));
+	int n,m;
+	scanf ("%d",&n);
+	int *x = (int*)malloc(sizeof(int)*n);
+	
+	
+	for (int i = 0;i < n; i++)
+	{
+		x[i] = rand()%101 - rand()%101;
+		printf("%4d",x[i]);
+	}
+	
+	printf("\n");
+
+	for (int i=0; i<n; i++)
+    {
+        for (int j=i+1; j<n; j++)
+        {
+            if (x[i]%2==0)
+            {
+               int temp = x[i];
+               x[i]=x[j];
+               x[j]=temp;
+            }
+        }    
+    }
+	
+	for (int i = 0;i < n;i++)
+	{
+		printf("%4d",x[i]);
+	}
+	return 0;
+}
