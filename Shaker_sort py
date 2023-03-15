@@ -1,0 +1,33 @@
+from random import randint
+
+def shaker_sort(mass,N):
+    begin_part = 0
+    end_part = N - 1
+    swap = True
+
+    while(swap):
+        swap = False
+        for i in range(begin_part, end_part):
+            if mass[i] > mass[i+1]:
+                mass[i], mass[i+1] = mass[i+1], mass[i]
+                swap = True
+        if not(swap):
+            break
+        end_part-=1
+        for i in range(end_part, begin_part - 1, -1):
+            if mass[i] > mass[i+1]:
+                mass[i], mass[i+1] = mass[i+1], mass[i]
+
+        begin_part+=1
+
+
+
+
+N = int(input())
+array = []
+
+for i in range(N):
+    array.append(randint(1,100))
+print(*array)
+shaker_sort(array, N)
+print(*array)
